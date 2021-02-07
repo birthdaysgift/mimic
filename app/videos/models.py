@@ -19,20 +19,20 @@ class Video(models.Model):
     def _create_thumbnail(self):
         if not self.thumbnail:
             filename = self.file.name
-            ffmpeg = r'"D:\Program Files\ffmpeg-4.0.2-win64-static\bin\ffmpeg.exe"'
+            ffmpeg = 'ffmpeg'
             video_path = os.path.join(settings.MEDIA_ROOT, filename)
             time = 0.1
             path_before, slash, filename = filename.rpartition('/')
             filename, extension = filename.split('.')
             thumb_name = ''.join((
-                path_before, slash, 'thumb_', filename, '.', extension
+                path_before, slash, 'thumb_', filename, '.png'
             ))
             thumb_abspath = os.path.join(settings.MEDIA_ROOT, thumb_name)
 
             cmd = f'{ffmpeg} -i {video_path} -ss {time} -f image2 -vframes 1 -y -vf scale=200:-2 {thumb_abspath}'
             result = subprocess.run(cmd, shell=True)
             if result.returncode == 0:
-                video = Video.objects.get(file=filename)
+                video = Video.objects.get(file=self.file.name)
                 video.thumbnail = thumb_name
                 video.save()
 

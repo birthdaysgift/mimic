@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'friends/css/ajax/all_friends.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'friends/css/ajax/all_friends.css' %}">
 
 <div class="all-friends-background">
     <div class="all-friends">
@@ -29,7 +29,7 @@
         </div>
     </div>
 </div>
-<script>
+<script type="text/javascript">
     var url = "{% static 'friends/js/ajax/all_friends.js' %}";
     $.getScript(url);
 </script>

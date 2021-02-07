@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'photos/css/ajax/detail_photo.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'photos/css/ajax/detail_photo.css' %}">
 
 <div class="detail-photo-background">
     <div class="detail-photo-window">
@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
      var url = "{% static 'photos/js/ajax/detail_photo.js' %}";
      $.getScript(url);
 </script>

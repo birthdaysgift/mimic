@@ -1,7 +1,5 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'videos/css/ajax/detail_video.css' %}">
-
 <div class="detail-video-background">
     <div class="detail-video-window">
         <video src="{{ posted_video.video.file.url }}" class="detail-video" controls></video>
@@ -47,7 +45,7 @@
         </div>
     </div>
 </div>
-<script>
+<script type="text/javascript">
     var url = "{% static 'videos/js/ajax/detail_video.js' %}";
     $.getScript(url);
 </script>

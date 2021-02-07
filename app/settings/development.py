@@ -1,16 +1,18 @@
-from .common import *
+from .base import *
 
-ALLOWED_HOSTS.append("localhost")
+ALLOWED_HOSTS = ['localhost']
 
-DEBUG = True
+DEBUG=True
+
+SECRET_KEY = 'keyboard cat'
 
 DATABASES = {
     'default': {
-        "ENGINE": 'django.db.backends.postgresql_psycopg2',
-        "NAME": "onlyours_db",
-        "USER": "postgres",
-        "PASSWORD": "0000",
-        "HOST": "localhost",
-        "PORT": 5432
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432
     }
 }

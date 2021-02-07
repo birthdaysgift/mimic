@@ -1,7 +1,7 @@
 {% load html_utils %}
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'photos/css/ajax/all_photos.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'photos/css/ajax/all_photos.css' %}">
 
 <div class="all-photos-background">
     <div class="photo-list-window">
@@ -35,7 +35,7 @@
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
     var url = "{% static 'photos/js/ajax/all_photos.js' %}";
     $.getScript(url);
 </script>

@@ -1,0 +1,38 @@
+FROM python:3.8
+
+WORKDIR /mimic
+
+COPY ./requirements/ ./requirements/
+RUN pip install -r ./requirements/production.txt
+RUN apt-get update && apt-get -y install ffmpeg
+
+COPY ./app ./app
+COPY ./docker-entrypoint.sh ./
+COPY ./compile-less.sh ./
+RUN chmod +x ./docker-entrypoint.sh
+RUN chmod +x ./compile-less.sh
+
+# Install less 
+# The first line sets the Dockerfile's default shell to a bash login shell. 
+# This means that every subsequent RUN, CMD, and ENTRYPOINT will be run under 
+# the current user (usually root), and source the ~/.bashrc file if run 
+# in the shell form.
+SHELL ["/bin/bash", "--login", "-c"]
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash 
+RUN nvm install node
+RUN npm install -g less
+
+ARG SECRET_KEY
+ARG POSTGRES_DB
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
+
+ENV SECRET_KEY=${SECRET_KEY}
+ENV POSTGRES_DB=${POSTGRES_DB}
+ENV POSTGRES_USER=${POSTGRES_USER}
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+ENV DJANGO_SETTINGS_MODULE=settings.production
+
+RUN ./compile-less.sh
+WORKDIR /mimic/app
+RUN python manage.py collectstatic --noinput

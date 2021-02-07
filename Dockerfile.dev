@@ -1,0 +1,26 @@
+FROM python:3.6
+
+WORKDIR /mimic
+
+# Install python dependencies
+COPY ./requirements/ ./requirements/
+RUN pip install -r ./requirements/development.txt
+
+# Install ffmpeg
+RUN apt-get update && apt-get -y install ffmpeg 
+
+# Install less 
+# The first line sets the Dockerfile's default shell to a bash login shell. 
+# This means that every subsequent RUN, CMD, and ENTRYPOINT will be run under 
+# the current user (usually root), and source the ~/.bashrc file if run 
+# in the shell form.
+SHELL ["/bin/bash", "--login", "-c"]
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash 
+RUN nvm install node
+RUN npm install -g less
+
+COPY ./app ./app
+
+ENV DJANGO_SETTINGS_MODULE=settings.development
+
+WORKDIR /mimic/app
