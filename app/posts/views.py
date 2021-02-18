@@ -51,7 +51,8 @@ def like_post(request, username=None, post_id=None):
         else:
             post.users_who_liked.add(request.user)
         post.save()
-    raise Http404()
+    else:
+        raise Http404()
 
 
 @transaction.atomic
@@ -65,4 +66,5 @@ def dislike_post(request, username=None, post_id=None):
         else:
             post.users_who_disliked.add(request.user)
         post.save()
-    raise Http404()
+    else:
+        raise Http404()
