@@ -1,6 +1,10 @@
+from os import path
+from os.path import abspath, dirname
 
 AUTH_USER_MODEL = "auth_custom.User"
 
+# absolute path to the project directory
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,6 +67,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_ROOT = path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
 
+MEDIA_ROOT = path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
