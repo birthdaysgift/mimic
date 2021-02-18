@@ -1,8 +1,10 @@
 from .base import *
 
-ALLOWED_HOSTS.append("localhost")
+ALLOWED_HOSTS = ['localhost']
 
-DEBUG = True
+DEBUG=True
+
+SECRET_KEY = 'keyboard cat'
 
 DATABASES = {
     'default': {
