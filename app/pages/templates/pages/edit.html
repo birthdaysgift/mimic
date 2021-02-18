@@ -24,7 +24,7 @@
             {{ field.errors }}
         {% endfor %}
     </div>
-    <form method="POST", class="edit-form">
+    <form method="POST" enctype="multipart/form-data", class="edit-form">
         {% csrf_token %}
         {{ form.avatar.label_tag }}
         {{ form.avatar }}
@@ -50,9 +50,11 @@
         </div>
         {{ form.gender.label_tag|set_attrs:"class='label gender-label'" }}
         <div class="input-info-block gender-info">
-            {% for gender_type in form.gender %}
-                {{ gender_type }}
-            {% endfor %}
+            <select>
+                {% for gender_type in form.gender %}
+                    {{ gender_type }}
+                {% endfor %}
+            </select>
             <p class="gender-info-text"></p>
         </div>
         {{ form.city.label_tag|set_attrs:"class='label city-label'" }}
