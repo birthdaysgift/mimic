@@ -1,8 +1,6 @@
 {% load static %}
 {% load html_utils %}
 
-<link rel="stylesheet" href="{% static 'search/css/query.css' %}">
-
 <div class="query-panel">
     <form method="POST" action="{% url 'search:users' %}">
         {% csrf_token %}
