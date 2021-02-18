@@ -1,18 +1,20 @@
 @import 'mixins.less';
-@import 'elephant.less';
-
-.title-text {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    margin-bottom: 10px;
-}
 
 .container {
     position: relative;
 
+    .row {width: 1200px;}
+
     @import 'navigation.less';
+
+    .title-text {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-bottom: 10px;
+        display: block;
+    }
 
     .left {
         border-left: 1px solid rgb(235, 235, 235);
