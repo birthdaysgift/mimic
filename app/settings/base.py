@@ -51,6 +51,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries': {
+                'html_utils': 'common.templatetags.html_utils'
             }
         },
     },
