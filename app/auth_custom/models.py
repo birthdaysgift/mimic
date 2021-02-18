@@ -22,7 +22,8 @@ class User(auth_models.AbstractUser):
 
     def get_friends(self, check_common_with=None):
         friends = self.friends.filter(friends=self)
-        if isinstance(check_common_with, auth_models.AbstractUser):
+        if isinstance(check_common_with, auth_models.AbstractUser) \
+            and check_common_with.id != self.id:
             user = check_common_with
             friends = friends.annotate(
                 is_common=Count(
