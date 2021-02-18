@@ -16,6 +16,7 @@ INSTALLED_APPS = [
 
     'auth_custom.apps.AuthConfig',
     'common.apps.CommonConfig',
+    'elephant.apps.ElephantConfig',
     'friends.apps.FriendsConfig',
     'pages.apps.PagesConfig',
     'photos.apps.PhotosConfig',
