@@ -1,7 +1,6 @@
-from .common import *
+import os
 
-# Use environment variables to keep secret key in production
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+from .base import *
 
 ALLOWED_HOSTS.append("onlyours.herokuapp.com")
 

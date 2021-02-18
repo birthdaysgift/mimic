@@ -1,4 +1,4 @@
-from .common import *
+from .base import *
 
 ALLOWED_HOSTS.append("localhost")
 
